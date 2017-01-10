@@ -1,0 +1,11 @@
+{
+  "name": "ievs",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Jeff Gran <jeff.gran@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "probability-distributions": "^0.9.1"
+  }
+}

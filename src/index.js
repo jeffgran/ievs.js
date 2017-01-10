@@ -22,39 +22,9 @@
 // }
 
 
-
-function ElectionScenario(numCandidates, numVoters, utilityGenerator /*, ignorance generator? */ ) {
-  [this.candidates, this.voters] = utilityGenerator(numCandidates, numVoters);
-
-  this.utilitySums = [/*...*/]; // a candidate's id is their index in this (and any other?) array
-  this.condorcetWinnerId = findCondorcetWinner();
-
-  function findCondorcetWinner() {
-    // function BuildDefeatsMatrix() {/*...*/}
-    // return id of condorcet winner or null;
-  }
-}
-
-
-
-class Election {
-  constructor(electionScenario, votingMethod) {
-    this.electionScenario = electionScenario;
-    this.winnerId = electionScenario.getWinner(votingMethod); // winner is the candidate's id.
-  }
-
-  bayesianRegret() {
-
-    // TODO need to investigate what exactly this is scaling and why.
-    // ScaleRealVec(NumMethods, B.SRegret, 1.0/((B.NumElections - 1.0)*B.NumElections) ); /*StdDev/sqrt(#) = StdErr.*/
-    return this.electionScenario.maxUtilitySum - this.electionScenario.utilitySums[this.winnerId];
-  }
-}
-
-
-// Usage:
-
-const electionScenario = new ElectionScenario(5, 200, randomUtilityGenerator);
-const election = new Election(electionScenario, plurality);
-
-console.log(election.bayesianRegret);
+module.exports = {
+  Election: require('./classes/Election'),
+  ElectionScenario: require('./classes/ElectionScenario'),
+  utilityGenerators: require('./utilityGenerators'),
+  votingMethods: require('./votingMethods')
+};
