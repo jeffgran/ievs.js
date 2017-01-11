@@ -1,7 +1,7 @@
 const {indexOfMaxValue} = require('../helpers');
 
 class Election {
-  constructor(electionScenario, votingMethod) {
+  constructor(electionScenario) {
     this.electionScenario = electionScenario;
 
     this.candidates = electionScenario.generateCandidates();
@@ -19,17 +19,17 @@ class Election {
     //   // function BuildDefeatsMatrix() {/*...*/}
     //   // return id of condorcet winner or null;
     // }
-
-    this.getWinner = (votingMethod) => {
-      const results = votingMethod(this.candidates);
-      return results.winner;
-    };
-
-    this.winnerId = this.getWinner(votingMethod); // winner is the candidate's id.
   }
 
-  bayesianRegret() {
-    return this.bestUtility - this.utilitySums[this.winnerId];
+
+  getWinner(votingMethod) {
+    const results = votingMethod(this.candidates);
+    return results.winner;
+  };
+
+  bayesianRegret(votingMethod) {
+    const winnerId = this.getWinner(votingMethod); // winner is the candidate's id.
+    return this.bestUtility - this.utilitySums[winnerId];
   }
 }
 

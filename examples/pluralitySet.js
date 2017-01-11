@@ -15,7 +15,8 @@ console.log("Candidates:", electionScenario.numCandidates);
 console.log("Voters:", electionScenario.numVoters);
 
 
-const electionSet = new ElectionSet(electionScenario, votingMethods.plurality, 100);
+const electionSet = new ElectionSet(electionScenario, votingMethods.plurality, 1000);
 
 console.log("Elections:", electionSet.numElections);
-console.log("Bayesian Regret:", electionSet.bayesianRegret());
+//console.log("Bayesian Regret:", electionSet.bayesianRegret());
+console.log("Normalized Bayesian Regret:", electionSet.normalizedBayesianRegret());
