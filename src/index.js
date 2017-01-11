@@ -25,6 +25,7 @@
 module.exports = {
   Election: require('./classes/Election'),
   ElectionScenario: require('./classes/ElectionScenario'),
+  ElectionSet: require('./classes/ElectionSet'),
   utilityGenerators: require('./utilityGenerators'),
   votingMethods: require('./votingMethods')
 };

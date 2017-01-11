@@ -1,13 +1,35 @@
+const {indexOfMaxValue} = require('../helpers');
+
 class Election {
   constructor(electionScenario, votingMethod) {
     this.electionScenario = electionScenario;
-    this.winnerId = electionScenario.getWinner(votingMethod); // winner is the candidate's id.
+
+    this.candidates = electionScenario.generateCandidates();
+
+    this.utilitySums = this.candidates.map((candidateUtilities) => {
+      return candidateUtilities.reduce((a,b) => a + b);
+    });
+
+    this.sociallyBestWinnerId = indexOfMaxValue(this.utilitySums);
+
+    this.bestUtility = this.utilitySums[this.sociallyBestWinnerId];
+
+    // this.condorcetWinnerId = findCondorcetWinner();
+    // function findCondorcetWinner() {
+    //   // function BuildDefeatsMatrix() {/*...*/}
+    //   // return id of condorcet winner or null;
+    // }
+
+    this.getWinner = (votingMethod) => {
+      const results = votingMethod(this.candidates);
+      return results.winner;
+    };
+
+    this.winnerId = this.getWinner(votingMethod); // winner is the candidate's id.
   }
 
   bayesianRegret() {
-    // TODO need to investigate what exactly this is scaling and why.
-    //ScaleRealVec(NumMethods, B.SRegret, 1.0/((B.NumElections - 1.0)*B.NumElections) ); /*StdDev/sqrt(#) = StdErr.*/
-    return this.electionScenario.bestUtility - this.electionScenario.utilitySums[this.winnerId];
+    return this.bestUtility - this.utilitySums[this.winnerId];
   }
 }
 

@@ -7,18 +7,21 @@ const {
   votingMethods
 } = ievs;
 
-console.log(ievs);
-
-
-// Usage:
 
 const electionScenario = new ElectionScenario(5, 200, utilityGenerators.gaussianDistribution);
+
+console.log("Election Scenario:");
+console.log("Candidates:", electionScenario.numCandidates);
+console.log("Voters:", electionScenario.numVoters);
+
+
+
 const election = new Election(electionScenario, votingMethods.plurality);
 
 
 console.log("Candidate Utility Sums:");
-electionScenario.utilitySums.map((n, i) => console.log(`${i} : ${n}`));
+election.utilitySums.map((n, i) => console.log(`${i} : ${n}`));
 
-console.log("Socially Best Winner:", electionScenario.sociallyBestWinnerId);
+console.log("Socially Best Winner:", election.sociallyBestWinnerId);
 console.log("Plurality Winner:", election.winnerId);
 console.log("Bayesian Regret:", election.bayesianRegret());
