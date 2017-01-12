@@ -8,7 +8,7 @@ const {
 } = ievs;
 
 
-const electionScenario = new ElectionScenario(5, 200, utilityGenerators.simpleNormalGenerator);
+const electionScenario = new ElectionScenario(5, 500, utilityGenerators.createIssueSpaceGenerator(2, 2));
 
 console.log("Election Scenario:");
 console.log("Candidates:", electionScenario.numCandidates);

@@ -17,8 +17,8 @@ function ElectionSet(electionScenario, votingMethod, numElections) {
     return bayesianRegret(randomWinner);
   };
 
-  this.normalizedBayesianRegret = () => {
-    return this.bayesianRegret()/this.randomWinnerRegret();
+  this.voterSatisfactionEfficiency = () => {
+    return 100 * (1 - this.bayesianRegret()/this.randomWinnerRegret());
   };
 
 

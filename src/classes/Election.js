@@ -29,6 +29,8 @@ class Election {
 
   bayesianRegret(votingMethod) {
     const winnerId = this.getWinner(votingMethod); // winner is the candidate's id.
+    // console.log("cand sums", this.utilitySums);
+    // console.log("winner id", winnerId);
     return this.bestUtility - this.utilitySums[winnerId];
   }
 }

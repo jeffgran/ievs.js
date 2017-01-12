@@ -1,3 +1,4 @@
 module.exports = {
-  gaussianDistribution: require('./gaussianDistribution')
+  simpleNormalGenerator: require('./simpleNormalGenerator'),
+  createIssueSpaceGenerator: require('./issueSpaceGenerator')
 };

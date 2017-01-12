@@ -8,12 +8,11 @@ const {
 } = ievs;
 
 
-const electionScenario = new ElectionScenario(5, 200, utilityGenerators.gaussianDistribution);
+const electionScenario = new ElectionScenario(5, 200, utilityGenerators.simpleNormalGenerator);
 
 console.log("Election Scenario:");
 console.log("Candidates:", electionScenario.numCandidates);
 console.log("Voters:", electionScenario.numVoters);
-
 
 
 const election = new Election(electionScenario, votingMethods.plurality);
